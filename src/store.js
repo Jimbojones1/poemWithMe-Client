@@ -4,8 +4,10 @@ import { routerMiddleware } from 'react-router-redux';
 // write action creators that return a function instead of an action
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
-import rootReducer from './modules';
+import rootReducer from './app/reducer';
 import { composeWithDevToools } from 'redux-devtools-extension';
+
+export const history = createHistory();
 
 const initialState = {};
 const enhancers = [];
