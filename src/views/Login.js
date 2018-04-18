@@ -7,7 +7,7 @@ class Login extends Component {
     super();
 
 
-    socket = io.connect('http://localhost:4000');
+
     this.state = {
       username: ''
     }

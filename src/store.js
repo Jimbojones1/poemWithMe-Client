@@ -4,13 +4,16 @@ import { routerMiddleware } from 'react-router-redux';
 // write action creators that return a function instead of an action
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
-import rootReducer from './app/reducer';
+import reducers from './reducers';
 import { composeWithDevToools } from 'redux-devtools-extension';
 
 export const history = createHistory();
 
 const initialState = {};
 const enhancers = [];
+
+const rootReducer = reducers;
+
 const middleware = [
   thunk,
   routerMiddleware(history)
@@ -18,11 +21,9 @@ const middleware = [
 
 
 if(process.env.NODE_ENV === 'development'){
-  const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION
 
-  if(typeof devToolsExtension === 'function'){
-    enhancers.push(devToolsExtension());
-  };
+    enhancers.push(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
 };
 
 
@@ -38,3 +39,4 @@ const store = createStore(
 )
 
 export default store;
+

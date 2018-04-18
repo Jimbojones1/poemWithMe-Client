@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import store, { history } from './state/store';
+import store, { history } from './store';
 import './index.css';
-import App from './app/index';
+import App from './components/app/index';
 import registerServiceWorker from './registerServiceWorker';
-import io from 'socket.io-client';
+import startChat from './chat';
 
-export const socket = io.connect('http://localhost:4000');
+
+startChat(store);
 
 
 console.log(history)

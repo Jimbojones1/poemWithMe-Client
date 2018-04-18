@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom';
-import LoginContainer from '../views/LoginContainer';
+import LoginContainer from '../login/LoginContainer';
 
 console.log(LoginContainer, ' form import')
 

@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
 
 
-// const initialState = {
-//   username: '',
-//   messages: []
-// }
+const initialState = {
+  username: '',
+  messages: []
+}
 
 
-const initializeUsernameReducer = (state, action) => {
+const initializeUsernameReducer = (state=initialState, action) => {
   console.log(action, ' this is action in initialzieUsernameReducer')
   switch (action.type) {
     case 'INITIALIZE_USERNAME':
@@ -23,7 +23,7 @@ const initializeUsernameReducer = (state, action) => {
 }
 
 
-const messageReducer = (state, action) => {
+const messageReducer = (state=initialState, action) => {
 
   switch (action.type) {
     case 'ADD_MESSAGE':
@@ -38,6 +38,6 @@ const messageReducer = (state, action) => {
 
 
 export default combineReducers({
-  message: messageReducer,
+  messageReducer,
   initializeUsernameReducer,
 });

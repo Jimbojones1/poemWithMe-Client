@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class Login extends Component {
+
+class Login extends Component {
   constructor(){
     super();
 
     this.state = {
-      username
+      username: ''
     }
   }
 
@@ -13,9 +14,11 @@ export default class Login extends Component {
     console.log(this.props, ' login component props')
     return (
       <form>
-        <input type='text' placeHolder="username" />
-        <button onClick={}>Submit</button>
+        <input type='text' placeholder="username" />
+        <button >Submit</button>
       </form>
       )
   }
 }
+
+export default Login;

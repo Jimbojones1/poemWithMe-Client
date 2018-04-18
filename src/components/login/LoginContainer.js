@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setUsername } from '../state/ducks/Login';
+
 import Login from './Login';
 
 console.log(Login, ' this from login')
@@ -14,15 +14,13 @@ class LoginContainer extends Component {
   }
 }
 
-const func = () => {
-  return 'hi'
-}
 
-const mapDispatchToProps = () => {
-  return {
-    initializeUsername: setUsername
-  }
-}
+
+// const mapDispatchToProps = () => {
+//   return {
+//     initializeUsername: setUsername
+//   }
+// }
 
 
 export default connect( null, null )( LoginContainer );
