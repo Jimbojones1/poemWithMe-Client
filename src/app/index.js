@@ -1,7 +1,8 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom';
-import Login from '../views/LoginContainer';
+import LoginContainer from '../views/LoginContainer';
 
+console.log(LoginContainer, ' form import')
 
 const App = () => (
   <div>
@@ -10,7 +11,7 @@ const App = () => (
     </header>
 
     <main>
-      <Route exact path="/" component={Login} />
+      <Route exact path="/" component={LoginContainer} />
     </main>
   </div>
 )

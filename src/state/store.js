@@ -1,16 +1,19 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 // Redux thunk is middleware for Redux that allows you to
 // write action creators that return a function instead of an action
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
-import rootReducer from './app/reducer';
+import * as reducers from './ducks';
 import { composeWithDevToools } from 'redux-devtools-extension';
 
 export const history = createHistory();
 
 const initialState = {};
 const enhancers = [];
+
+const rootReducer = combineReducers(reducers)
+
 const middleware = [
   thunk,
   routerMiddleware(history)

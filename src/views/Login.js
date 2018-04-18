@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import io from 'socket.io-client';
 let socket;
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(){
     super();
 
@@ -17,9 +17,11 @@ export default class Login extends Component {
     console.log(this.props, ' login component props')
     return (
       <form>
-        <input type='text' placeHolder="username" />
-        <button onClick={this.props.initializeUsername(socket, this.state.username)}>Submit</button>
+        <input type='text' placeholder="username" />
+        <button >Submit</button>
       </form>
       )
   }
 }
+
+export default Login;
