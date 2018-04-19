@@ -5,17 +5,22 @@ import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import reducers from './reducers';
+import {chatMiddleWare} from './chat';
 import { composeWithDevToools } from 'redux-devtools-extension';
 
 export const history = createHistory();
 
-const initialState = {};
+const initialState = {
+  username: '',
+  messages: []
+};
 const enhancers = [];
 
 const rootReducer = reducers;
 
 const middleware = [
   thunk,
+  chatMiddleWare,
   routerMiddleware(history)
 ];
 

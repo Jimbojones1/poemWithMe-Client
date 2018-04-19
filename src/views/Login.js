@@ -3,20 +3,13 @@ import io from 'socket.io-client';
 let socket;
 
 class Login extends Component {
-  constructor(){
-    super();
+  onSubmit(e){
 
-
-
-    this.state = {
-      username: ''
-    }
   }
-
   render(){
     console.log(this.props, ' login component props')
     return (
-      <form>
+      <form onSubmit>
         <input type='text' placeholder="username" />
         <button >Submit</button>
       </form>
