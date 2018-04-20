@@ -16,11 +16,11 @@ class LoginContainer extends Component {
 
 
 
-// const mapDispatchToProps = () => {
-//   return {
-//     initializeUsername: setUsername
-//   }
-// }
+const mapDispatchToProps = () => {
+  return {
+    initializeUsername: setUsername
+  }
+}
 
 
 export default connect( null, null )( LoginContainer );
