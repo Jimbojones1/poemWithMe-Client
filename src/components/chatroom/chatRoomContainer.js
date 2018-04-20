@@ -23,7 +23,7 @@ class ChatRoom extends Component {
 const mapStateToProps = (state) => {
   console.log(state, ' in mapStateToProps')
   return {
-    usernames: [...state.usernames]
+    usernames: state.chat.usernames
   }
 }
 

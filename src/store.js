@@ -13,7 +13,10 @@ export const history = createHistory();
 const initialState = {
   username: 'jim',
   messages: [],
-  usernames: []
+  chat: {
+    usernames: [],
+    chatBoxes: []
+  }
 };
 const enhancers = [];
 

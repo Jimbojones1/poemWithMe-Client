@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { initialiazeUsername as setUsername } from '../../actions/message-actions';
 
@@ -22,11 +22,11 @@ const Login = ({setUsername}) => {
 }
 
 
-const mapStateToProps = (state) => {
-  return {
-    username: state.username
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     username: state.username
+//   }
+// }
 
 
 
@@ -39,4 +39,4 @@ const mapDispatchToProps = (dispatch, route) => {
 }
 
 
-export default connect( mapStateToProps, mapDispatchToProps )( Login );
+export default connect( null, mapDispatchToProps )( Login );

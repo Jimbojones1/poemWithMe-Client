@@ -22,11 +22,14 @@ const handleChatReducer = (state={}, action) => {
 
   switch (action.type){
     case 'chat/UPDATE_CHAT_USERS':
-    console.log(state, 'in handle Chat Reducer')
-      return [
-        ...action.usernames
-      ]
 
+       return {
+            usernames: [...action.usernames]
+        }
+    // case: 'chat/UPDATE_CHAT_BOXES':
+    //    return [
+
+    //    ]
 
     default:
       return state;
@@ -54,5 +57,5 @@ const messageReducer = (state={}, action) => {
 export default combineReducers({
   messages: messageReducer,
   username: initializeUsernameReducer,
-  usernames: handleChatReducer
+  chat: handleChatReducer
 });
