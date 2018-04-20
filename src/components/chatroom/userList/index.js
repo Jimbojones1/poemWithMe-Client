@@ -1,5 +1,5 @@
- import React from 'react';
-
+import React from 'react';
+import './styles/styles.css';
 
 const UserList = ({users, openChat}) => {
 
@@ -11,7 +11,7 @@ const UserList = ({users, openChat}) => {
 
         <div className="container" id="userList">
             <div className="row">
-              <div  className="twelve columns">
+              <div className="twelve columns">
                 <header className="twelve columns UserListHeader"><h5>Poets</h5></header>
                 <ul>{usernames}</ul>
               </div>

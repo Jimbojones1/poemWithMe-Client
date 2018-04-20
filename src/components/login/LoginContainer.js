@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { initialiazeUsername as setUsername } from '../../actions/message-actions';
-// import {} from './style.css'
+import './styles/style.css'
 
 
 const Login = ({setUsername}) => {
 
     return (
-        <form onSubmit={(e) => {
+        <form className='username' onSubmit={(e) => {
           e.preventDefault();
           setUsername(this.input.value)
 
