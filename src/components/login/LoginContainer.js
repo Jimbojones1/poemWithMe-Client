@@ -14,8 +14,9 @@ class LoginContainer extends Component {
   }
   onChange = (e) => {
 
+
     // this.setState({username: e.currentTarget.value})
-    // this.props.setUsername(e.currentTarget.value);
+    this.props.setUsername(e.currentTarget.value);
   }
 
   render() {
@@ -35,7 +36,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   console.log(' this is something isomehtign', setUsername)
   return {
-    setUsername
+    setUsername: () => (username) => dispatch(setUsername(username))
   }
 
 }
