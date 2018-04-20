@@ -1,24 +1,23 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 
 
-class Login extends Component {
-  constructor(){
-    super();
+const Login = ({handleInput, setUsername}) => {
 
-    this.state = {
-      username: ''
-    }
-  }
 
-  render(){
-    console.log(this.props, ' login component props')
     return (
-      <form>
-        <input type='text' placeholder="username" />
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        console.log('submit is happending')
+        setUsername(this.input.value)
+        console.log(setUsername(), ' this in onSubmit')
+      }}>
+        <input type='text' placeholder="username" onKeyPress={handleInput} ref={node => {
+
+            this.input = node;
+          }}/>/>
         <button >Submit</button>
       </form>
       )
-  }
 }
 
 export default Login;

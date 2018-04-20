@@ -2,7 +2,6 @@ import React from 'react'
 import { Route, Link } from 'react-router-dom';
 import LoginContainer from '../login/LoginContainer';
 
-console.log(LoginContainer, ' form import')
 
 const App = () => (
   <div>

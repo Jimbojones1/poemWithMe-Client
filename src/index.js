@@ -12,7 +12,7 @@ import startChat from './chat';
 startChat(store);
 
 
-console.log(history)
+
 
 
 

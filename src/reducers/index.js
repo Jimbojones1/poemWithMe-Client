@@ -5,9 +5,10 @@ import { combineReducers } from "redux";
 
 
 const initializeUsernameReducer = (state={}, action) => {
-  console.log(action, ' this is action in initialzieUsernameReducer')
+  console.log(action, ' this is action')
   switch (action.type) {
     case 'INITIALIZE_USERNAME':
+        console.log('hitting, in reducer')
         return {
             ...state,
             username: action.username
@@ -21,10 +22,8 @@ const initializeUsernameReducer = (state={}, action) => {
 
 
 const messageReducer = (state={}, action) => {
-  console.log('messageReducer', action)
   switch (action.type) {
     case 'login/ADD_RESPONSE':
-    console.log('hitting in reducerrrrrrr')
       return {
         ...state,
         messages: [...action.message]

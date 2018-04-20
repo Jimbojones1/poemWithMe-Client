@@ -6,12 +6,12 @@ import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import reducers from './reducers';
 import {chatMiddleWare} from './chat';
-import { composeWithDevToools } from 'redux-devtools-extension';
+// import { composeWithDevToools } from 'redux-devtools-extension';
 
 export const history = createHistory();
 
 const initialState = {
-  username: '',
+  username: 'jim',
   messages: []
 };
 const enhancers = [];
