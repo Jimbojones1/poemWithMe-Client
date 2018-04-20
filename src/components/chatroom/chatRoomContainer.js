@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { initialiazeUsername  } from '../../actions/message-actions';
+import { addChatBox  } from '../../actions/message-actions';
 import UserList from './userList';
 
 
 class ChatRoom extends Component {
+  openChat = (e) => {
+    this.props.addChatBox(e.currentTarget.innerText)
+  }
 
   render(){
-    console.log(this.props, ' in chat Rooom')
+    const {usernames} = this.props;
+
     return (
       <div>
         <h2>Chat Container</h2>
-        <UserList users={this.props.usernames}/>
+        <UserList users={usernames} openChat={this.openChat}/>
       </div>
       )
   }
@@ -27,5 +31,11 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addChatBox: (username) => dispatch(addChatBox(username))
+  }
+}
 
-export default connect( mapStateToProps, null )( ChatRoom );
+
+export default connect( mapStateToProps, mapDispatchToProps )( ChatRoom );

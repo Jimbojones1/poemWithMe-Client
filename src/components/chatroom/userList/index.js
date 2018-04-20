@@ -1,10 +1,10 @@
  import React from 'react';
 
 
-const UserList = ({users}) => {
-  console.log(users, ' this is userrrss')
+const UserList = ({users, openChat}) => {
+
   const usernames = users.map((user, i) => {
-    return  <li key={i}>{user}</li>
+    return  <li key={i} onClick={openChat}>{user}</li>
   })
 
   return (

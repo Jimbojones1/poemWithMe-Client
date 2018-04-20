@@ -24,12 +24,14 @@ const handleChatReducer = (state={}, action) => {
     case 'chat/UPDATE_CHAT_USERS':
 
        return {
+            ...state,
             usernames: [...action.usernames]
         }
-    // case: 'chat/UPDATE_CHAT_BOXES':
-    //    return [
-
-    //    ]
+    case 'chat/ADD_CHAT_BOX':
+       return {
+          ...state,
+          chatBoxes: [...state.chatBoxes, action.username]
+       }
 
     default:
       return state;

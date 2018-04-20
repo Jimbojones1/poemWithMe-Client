@@ -1,7 +1,7 @@
 export const INITIALIZE_USERNAME = "login/INITIALIZE_USERNAME";
 export const ADD_RESPONSE = "login/ADD_RESPONSE";
 export const UPDATE_CHAT_USERS = 'chat/UPDATE_CHAT_USERS';
-export const UPDATE_CHAT_BOXES = 'chat/UPDATE_CHAT_BOXES'
+export const ADD_CHAT_BOX = 'chat/ADD_CHAT_BOX';
 
 export function addResponse(message) {
   return { type: ADD_RESPONSE, message };
@@ -19,7 +19,7 @@ export const updateChatUsers = (usernames) => ({
   usernames
 })
 
-export const updateChatBoxers = (username) => ({
-  type: UPDATE_CHAT_BOXES,
+export const addChatBox = (username) => ({
+  type: ADD_CHAT_BOX,
   username
 })
