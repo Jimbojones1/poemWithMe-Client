@@ -1,16 +1,13 @@
 import { combineReducers } from "redux";
 
 
-
-
-
 const initializeUsernameReducer = (state={}, action) => {
-  console.log(action, ' this is action')
+  console.log(action, ' this is action', state, ' this is state in reducer')
   switch (action.type) {
-    case 'INITIALIZE_USERNAME':
-        console.log('hitting, in reducer')
+    case 'login/INITIALIZE_USERNAME':
+        // console.log('hitting, in reducer', action.username, state, 'stateee')
+        // console.log({username: action.username})
         return {
-            ...state,
             username: action.username
         }
     default:
@@ -19,6 +16,26 @@ const initializeUsernameReducer = (state={}, action) => {
 
   }
 }
+
+
+const handleChatReducer = (state={}, action) => {
+
+  switch (action.type){
+    case 'chat/UPDATE_CHAT_USERS':
+    console.log(state, 'in handle Chat Reducer')
+      return [
+        ...action.usernames
+      ]
+
+
+    default:
+      return state;
+  }
+}
+
+
+
+
 
 
 const messageReducer = (state={}, action) => {
@@ -37,4 +54,5 @@ const messageReducer = (state={}, action) => {
 export default combineReducers({
   messages: messageReducer,
   username: initializeUsernameReducer,
+  usernames: handleChatReducer
 });

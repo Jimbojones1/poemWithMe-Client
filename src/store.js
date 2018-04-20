@@ -12,7 +12,8 @@ export const history = createHistory();
 
 const initialState = {
   username: 'jim',
-  messages: []
+  messages: [],
+  usernames: []
 };
 const enhancers = [];
 

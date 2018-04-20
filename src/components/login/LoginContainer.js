@@ -1,45 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { initialiazeUsername as setUsername } from '../../actions/message-actions';
-import Login from './Login';
 
 
 
-class LoginContainer extends Component {
-  constructor(){
-    super();
-    this.state ={
-      username: ''
-    }
-  }
-  onChange = (e) => {
+const Login = ({setUsername}) => {
 
-
-    // this.setState({username: e.currentTarget.value})
-    this.props.setUsername(e.currentTarget.value);
-  }
-
-  render() {
     return (
-      <Login handleInput={this.onChange} setUsername={this.props.setUsername}/>
-      )
-  }
-}
+        <form onSubmit={(e) => {
+          e.preventDefault();
+          setUsername(this.input.value)
 
+        }}>
+        <input type='text' placeholder="username" ref={node => {
+
+            this.input = node;
+          }}/>
+        <button>Submit</button>
+      </form>
+      )
+}
 
 
 const mapStateToProps = (state) => {
-  console.log(state, 'in mapDispatchToProps')
-  return {username: state.username}
+  return {
+    username: state.username
+  }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  console.log(' this is something isomehtign', setUsername)
+
+
+const mapDispatchToProps = (dispatch, route) => {
+  console.log(' this is something isomehtign', setUsername, route)
   return {
-    setUsername: () => (username) => dispatch(setUsername(username))
+    setUsername: (username) => dispatch(setUsername(username, route))
   }
 
 }
 
 
-export default connect( mapStateToProps, mapDispatchToProps )( LoginContainer );
+export default connect( mapStateToProps, mapDispatchToProps )( Login );
