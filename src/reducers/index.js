@@ -27,10 +27,19 @@ const handleChatReducer = (state={}, action) => {
             usernames: [...action.usernames]
         }
     case 'chat/ADD_CHAT_BOX':
-       return {
-          ...state,
-          chatBoxes: [...state.chatBoxes, action.username]
-       }
+       if(state.chatBoxes.indexOf(action.username) === -1){
+           return {
+            ...state,
+            chatBoxes: [...state.chatBoxes, action.username],
+
+          }
+      } else {
+        return {
+            ...state,
+            chatBoxes: [...state.chatBoxes],
+          }
+
+      }
     case 'chat/BOXES_OPEN':
       return {
         ...state,
@@ -62,12 +71,25 @@ const handleChatReducer = (state={}, action) => {
         message: action.message
       }
       console.log(newObj, 'in reducer prvMessage')
-      return {
-        ...state,
-        boxesOpen: true,
-        chatBoxes: [...state.chatBoxes, action.username],
-        prvMsgData: [...state.prvMsgData, newObj]
+      let chatBoxes;
+      if(state.chatBoxes.indexOf(action.username) === -1){
+           return {
+            ...state,
+            boxesOpen: true,
+            chatBoxes: [...state.chatBoxes, action.username],
+            prvMsgData: [...state.prvMsgData, newObj]
+          }
+      } else {
+        return {
+            ...state,
+            boxesOpen: true,
+            chatBoxes: [...state.chatBoxes],
+            prvMsgData: [...state.prvMsgData, newObj]
+          }
+
       }
+
+
 
     default:
       return state;
