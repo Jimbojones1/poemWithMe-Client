@@ -5,11 +5,10 @@ const initializeUsernameReducer = (state={}, action) => {
 
   switch (action.type) {
     case 'login/INITIALIZE_USERNAME':
+        console.log(action.username, ' in init username', state)
         // console.log('hitting, in reducer', action.username, state, 'stateee')
         // console.log({username: action.username})
-        return {
-            username: action.username
-        }
+        return action.username
     default:
 
       return state
@@ -41,6 +40,18 @@ const handleChatReducer = (state={}, action) => {
       return {
         ...state,
         chatBoxes: [...state.chatBoxes.filter((user) => user !== action.user )]
+      }
+    case 'chat/PM':
+
+      const msgObject = {
+        from: action.username,
+        recipient: action.recipient,
+        message: action.message
+      }
+
+      return {
+        ...state,
+        prvMessageData: [...state.prvMessageData, msgObject]
       }
 
     default:

@@ -36,8 +36,9 @@ export const closeChatBoxes = (user) => ({
   user
 })
 
-export const emitPrivateMessage = (recipient, message) => ({
+export const emitPrivateMessage = (username, recipient, message) => ({
   type: PM,
+  username,
   recipient,
   message
 })

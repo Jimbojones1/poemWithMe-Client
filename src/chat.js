@@ -10,14 +10,19 @@ export function chatMiddleWare(store, what){
     if(socket && action.type === actions.INITIALIZE_USERNAME){
       // send socket emit message
       // console.log('inside if and action.type')
-      const {username }= store.getState()
 
-      socket.emit('setInitialUsername', username);
+      socket.emit('setInitialUsername', action.username);
       action.route.history.push('/chat')
       // store.dispatch()
     } else if (socket && action.type === actions.PM) {
+
       console.log('else if in reduce emit emitPrivateMessage', action)
-      socket.emit('pm', action.recipient, action.message)
+
+      socket.emit('pm', {
+                        from: action.username,
+                        recipient: action.recipient,
+                        message: action.message
+                      });
     }
 
     return result;

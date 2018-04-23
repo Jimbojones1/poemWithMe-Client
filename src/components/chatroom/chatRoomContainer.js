@@ -27,6 +27,7 @@ class ChatRoom extends Component {
 
 // state is passed to this function
 const mapStateToProps = (state) => {
+  console.log(state, ' this is state in chatroom Container')
   return {
     usernames: state.chat.usernames,
     chatBoxesOpen: state.chat.boxesOpen

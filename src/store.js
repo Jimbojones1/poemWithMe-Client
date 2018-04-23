@@ -16,7 +16,8 @@ const initialState = {
   chat: {
     usernames: [],
     chatBoxes: [],
-    boxesOpen: false
+    boxesOpen: false,
+    prvMessageData: []
   }
 };
 const enhancers = [];

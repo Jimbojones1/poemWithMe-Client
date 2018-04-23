@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 
 
-class PrivateMessageArea extends Component {
-    sorter = (data) => {
-      // var user = this.props.data;
-      // if(user === data.userTo){
-      //   return "Sender"
-      // }
-      // else{
-      //   return "Reciepient"
-      // }
-    }
-    render(){
+const PrivateMessageArea = ({PrvMsgData}) => {
+
       // var user = this.props.data
       // var filteredData = this.props.PrvMsgData.filter(function(data, i){
       //   console.log(data)
@@ -32,8 +23,7 @@ class PrivateMessageArea extends Component {
             PrivateMessage Datae
          </div>
         )
+}
 
-    }
-  }
 
   export default PrivateMessageArea;

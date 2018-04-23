@@ -9,6 +9,7 @@ const Login = ({setUsername}) => {
     return (
         <form className='username' onSubmit={(e) => {
           e.preventDefault();
+          console.log(this.input.value, 'in login')
           setUsername(this.input.value)
 
         }}>

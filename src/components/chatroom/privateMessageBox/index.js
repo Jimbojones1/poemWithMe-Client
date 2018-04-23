@@ -13,9 +13,13 @@ class PrivateMessageBox extends Component {
     }
     submitMessage = (recipient, e) => {
 
+      console.log(e.charCode, ' this is e.charCode', e.currentTarget, e.currentTarget.value)
+
       if(e.charCode === 13){
-        console.log(this.props, 'being called')
-        this.props.emitPrivateMessage(recipient, e.currentTarget.value)
+
+        const {username, emitPrivateMessage} = this.props;
+        const message = e.currentTarget.value;
+        emitPrivateMessage(username, recipient, message)
         e.currentTarget.value = ''
       }
       // socket.emit('pm')
@@ -48,13 +52,14 @@ class PrivateMessageBox extends Component {
 const mapStateToProps = (state) => {
   console.log(state, ' in mapStateToProps')
   return {
+    username: state.username,
     chatBoxes: state.chat.chatBoxes
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    emitPrivateMessage: (recipient, message) => dispatch(emitPrivateMessage(recipient, message)),
+    emitPrivateMessage: (username, recipient, message) => dispatch(emitPrivateMessage(username, recipient, message)),
     closeChatBoxes: (username) => dispatch(closeChatBoxes(username))
   }
 }
