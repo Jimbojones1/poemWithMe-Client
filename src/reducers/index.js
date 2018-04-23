@@ -37,6 +37,11 @@ const handleChatReducer = (state={}, action) => {
         ...state,
         boxesOpen: true
       }
+    case 'chat/BOXES_CLOSED':
+      return {
+        ...state,
+        chatBoxes: [...state.chatBoxes.filter((user) => user !== action.user )]
+      }
 
     default:
       return state;

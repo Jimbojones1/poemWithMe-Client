@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './styles/styles.css';
+import { closeChatBoxes } from '../../../actions/message-actions';
 import PrivateMessageHeader from '../privateMessageHeader';
 import PrivateMessageInput from '../privateMessageInput';
 import PrivateMessageArea from '../privateMessageArea';
@@ -8,7 +9,7 @@ import PrivateMessageArea from '../privateMessageArea';
 
 class PrivateMessageBox extends Component {
     removeBox = (user) => {
-      console.log(user, 'this is user')
+      this.props.closeChatBoxes(user);
     }
     render(){
 
@@ -42,11 +43,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addChatBox: (username) => dispatch(addChatBox(username))
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    closeChatBoxes: (username) => dispatch(closeChatBoxes(username))
+  }
+}
 
 
-export default connect( mapStateToProps, null )( PrivateMessageBox );
+export default connect( mapStateToProps, mapDispatchToProps )( PrivateMessageBox );
