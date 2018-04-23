@@ -4,6 +4,7 @@ export const UPDATE_CHAT_USERS = 'chat/UPDATE_CHAT_USERS';
 export const ADD_CHAT_BOX = 'chat/ADD_CHAT_BOX';
 export const CHAT_BOXES_OPEN = 'chat/BOXES_OPEN';
 export const CHAT_BOXES_CLOSED = 'chat/BOXES_CLOSED';
+export const PM = 'chat/PM';
 
 export function addResponse(message) {
   return { type: ADD_RESPONSE, message };
@@ -33,4 +34,10 @@ export const openChatBoxes = () => ({
 export const closeChatBoxes = (user) => ({
   type: CHAT_BOXES_CLOSED,
   user
+})
+
+export const emitPrivateMessage = (recipient, message) => ({
+  type: PM,
+  recipient,
+  message
 })

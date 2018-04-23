@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './styles/styles.css';
-import { closeChatBoxes } from '../../../actions/message-actions';
+import { closeChatBoxes, emitPrivateMessage } from '../../../actions/message-actions';
 import PrivateMessageHeader from '../privateMessageHeader';
 import PrivateMessageInput from '../privateMessageInput';
 import PrivateMessageArea from '../privateMessageArea';
@@ -10,6 +10,15 @@ import PrivateMessageArea from '../privateMessageArea';
 class PrivateMessageBox extends Component {
     removeBox = (user) => {
       this.props.closeChatBoxes(user);
+    }
+    submitMessage = (recipient, e) => {
+
+      if(e.charCode === 13){
+        console.log(this.props, 'being called')
+        this.props.emitPrivateMessage(recipient, e.currentTarget.value)
+        e.currentTarget.value = ''
+      }
+      // socket.emit('pm')
     }
     render(){
 
@@ -20,7 +29,7 @@ class PrivateMessageBox extends Component {
         return   <div className="PrivateMessageBox five columns" key={i}>
                     <PrivateMessageHeader user={user} removeBox={this.removeBox}/>
                     <PrivateMessageArea />
-                    <PrivateMessageInput />
+                    <PrivateMessageInput submitMessage={this.submitMessage} user={user}/>
                  </div>
                })
 
@@ -45,6 +54,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    emitPrivateMessage: (recipient, message) => dispatch(emitPrivateMessage(recipient, message)),
     closeChatBoxes: (username) => dispatch(closeChatBoxes(username))
   }
 }

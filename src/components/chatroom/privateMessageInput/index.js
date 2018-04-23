@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 
 
-const PrivateMessageInput = () => {
+const PrivateMessageInput = ({submitMessage, user}) => {
       return (
-        <input className="prvSend twelve columns"/>
+        <input className="prvSend twelve columns" onKeyPress={submitMessage.bind(this, user)}/>
         )
 
 }
