@@ -41,6 +41,8 @@ export default function(store) {
 
   socket.on('pm', ({from, recipient, message}) => {
     console.log('pm', from, recipient, message)
+
+
     store.dispatch(actions.updatePrivateMessage(from, recipient, message))
 
   });

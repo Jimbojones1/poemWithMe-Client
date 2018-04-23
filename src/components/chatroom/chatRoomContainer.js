@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { addChatBox,  openChatBoxes } from '../../actions/message-actions';
 import UserList from './userList';
 import PrivateMessageBox from './privateMessageBox';
+import PoemInviteModal from './poemInvitationModal';
+
 
 class ChatRoom extends Component {
   openChat = (e) => {
@@ -12,12 +14,13 @@ class ChatRoom extends Component {
   }
 
   render(){
-    const {usernames, chatBoxesOpen} = this.props;
+    const {usernames, chatBoxesOpen, poemModal} = this.props;
 
     return (
       <div id="ChatRoom">
         <UserList users={usernames} openChat={this.openChat}/>
         {chatBoxesOpen ? <PrivateMessageBox addChat={this.openChat} /> : null}
+        {poemModal ? <PoemInviteModal modal="poemModal" /> : null}
       </div>
       )
   }
@@ -29,6 +32,7 @@ class ChatRoom extends Component {
 const mapStateToProps = (state) => {
   console.log(state, ' this is state in chatroom Container')
   return {
+    poemModal: state.chat.poemModal,
     usernames: state.chat.usernames,
     chatBoxesOpen: state.chat.boxesOpen
   }

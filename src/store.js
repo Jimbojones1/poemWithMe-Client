@@ -12,8 +12,8 @@ export const history = createHistory();
 
 const initialState = {
   username: 'jim',
-  messages: [],
   chat: {
+    poemModal: true,
     usernames: [],
     chatBoxes: [],
     boxesOpen: false,
