@@ -11,6 +11,14 @@ class PrivateMessageBox extends Component {
     removeBox = (user) => {
       this.props.closeChatBoxes(user);
     }
+    sortMessages = (from) => {
+      const { username } = this.props;
+      if(username === from){
+        return 'Sender';
+      } else {
+        return 'Recipient'
+      }
+    }
     submitMessage = (recipient, e) => {
 
       console.log(e.charCode, ' this is e.charCode', e.currentTarget, e.currentTarget.value)
@@ -28,11 +36,12 @@ class PrivateMessageBox extends Component {
 
       const { chatBoxes } = this.props;
 
+      console.log(this.props, 'in private message box')
 
       const userBoxes = chatBoxes.map((user, i) => {
         return   <div className="PrivateMessageBox five columns" key={i}>
                     <PrivateMessageHeader user={user} removeBox={this.removeBox}/>
-                    <PrivateMessageArea />
+                    <PrivateMessageArea  prvMsgData={this.props.prvMsgData} user={user} sortMessages={this.sortMessages}/>
                     <PrivateMessageInput submitMessage={this.submitMessage} user={user}/>
                  </div>
                })
@@ -53,7 +62,8 @@ const mapStateToProps = (state) => {
   console.log(state, ' in mapStateToProps')
   return {
     username: state.username,
-    chatBoxes: state.chat.chatBoxes
+    chatBoxes: state.chat.chatBoxes,
+    prvMsgData: state.chat.prvMsgData
   }
 }
 

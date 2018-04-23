@@ -1,26 +1,21 @@
 import React, { Component } from 'react';
 
 
-const PrivateMessageArea = ({PrvMsgData}) => {
+const PrivateMessageArea = ({user, prvMsgData, sortMessages}) => {
 
       // var user = this.props.data
-      // var filteredData = this.props.PrvMsgData.filter(function(data, i){
-      //   console.log(data)
-      //   return data.userTo === user || user === data.from
-      // })
+      const filteredData = prvMsgData.filter((data, i) => {
+        console.log(data)
+        return data.recipient === user || user === data.username
+      }).map(({from, message, recipient}, i) => {
+        return (
+          <p key={i}><span className={sortMessages(from)}>{from}</span>: {message}</p>
+          )
+      });
 
-      // var self = this;
-      // // console.log('-------------------------------------filteredData----------------------------------------------------------------------------------')
-      // // console.log(filteredData)
-      // // console.log('-----------------------------------------------------------------------------------------------------------------------------------')
-      // var userData = filteredData.map(function(data, i){
-      //   return (
-      //     <p key={i}><span></span></p>
-      //     )
-      // })
       return (
          <div className='PrivateMessage'>
-            PrivateMessage Datae
+            {filteredData}
          </div>
         )
 }

@@ -51,7 +51,7 @@ const handleChatReducer = (state={}, action) => {
 
       return {
         ...state,
-        prvMessageData: [...state.prvMessageData, msgObject]
+        prvMsgData: [...state.prvMsgData, msgObject]
       }
 
     default:
