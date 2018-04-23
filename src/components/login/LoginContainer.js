@@ -9,7 +9,6 @@ const Login = ({setUsername}) => {
     return (
         <form className='username' onSubmit={(e) => {
           e.preventDefault();
-          console.log(this.input.value, 'in login')
           setUsername(this.input.value)
 
         }}>
@@ -32,7 +31,6 @@ const Login = ({setUsername}) => {
 
 
 const mapDispatchToProps = (dispatch, route) => {
-  console.log(' this is something isomehtign', setUsername, route)
   return {
     setUsername: (username) => dispatch(setUsername(username, route))
   }

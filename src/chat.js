@@ -44,8 +44,4 @@ export default function(store) {
     store.dispatch(actions.updatePrivateMessage(from, recipient, message))
 
   });
-
-  socket.on('message', message => {
-    store.dispatch(actions.addResponse(message));
-  });
 }
