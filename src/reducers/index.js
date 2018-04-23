@@ -70,8 +70,7 @@ const handleChatReducer = (state={}, action) => {
         recipient: action.recipient,
         message: action.message
       }
-      console.log(newObj, 'in reducer prvMessage')
-      let chatBoxes;
+
       if(state.chatBoxes.indexOf(action.username) === -1){
            return {
             ...state,
