@@ -54,6 +54,21 @@ const handleChatReducer = (state={}, action) => {
         prvMsgData: [...state.prvMsgData, msgObject]
       }
 
+    case 'chat/UPDATE_PRV_MESSAGE':
+
+      const newObj = {
+        from: action.username,
+        recipient: action.recipient,
+        message: action.message
+      }
+      console.log(newObj, 'in reducer prvMessage')
+      return {
+        ...state,
+        boxesOpen: true,
+        chatBoxes: [...state.chatBoxes, action.username],
+        prvMsgData: [...state.prvMsgData, newObj]
+      }
+
     default:
       return state;
   }

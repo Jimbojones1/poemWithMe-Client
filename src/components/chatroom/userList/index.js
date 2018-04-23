@@ -12,7 +12,7 @@ const UserList = ({users, openChat}) => {
         <div className="container" id="userList">
             <div className="row">
               <div className="twelve columns">
-                <header className="twelve columns UserListHeader"><h5>Poets</h5></header>
+                <header className="twelve columns userListHeader"><h5>Poets</h5></header>
                 <ul>{usernames}</ul>
               </div>
             </div>

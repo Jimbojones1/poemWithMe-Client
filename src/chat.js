@@ -39,6 +39,11 @@ export default function(store) {
     store.dispatch(actions.updateChatUsers(usernames));
   });
 
+  socket.on('pm', ({from, recipient, message}) => {
+    console.log('pm', from, recipient, message)
+    store.dispatch(actions.updatePrivateMessage(from, recipient, message))
+
+  });
 
   socket.on('message', message => {
     store.dispatch(actions.addResponse(message));

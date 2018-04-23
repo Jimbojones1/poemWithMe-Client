@@ -9,7 +9,7 @@
   overflow-y: scroll;
   box-shadow: 0 8px 6px 1.3px black;
 }
-#userList .UserListHeader {
+#userList .userListHeader {
   margin-bottom: 10px;
   border-bottom: 1.7px solid #F2AE72;
   height: 2.5em;
