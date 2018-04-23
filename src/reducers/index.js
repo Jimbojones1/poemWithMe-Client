@@ -32,6 +32,11 @@ const handleChatReducer = (state={}, action) => {
           ...state,
           chatBoxes: [...state.chatBoxes, action.username]
        }
+    case 'chat/BOXES_OPEN':
+      return {
+        ...state,
+        boxesOpen: !state.boxesOpen
+      }
 
     default:
       return state;

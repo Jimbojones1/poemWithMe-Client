@@ -15,7 +15,8 @@ const initialState = {
   messages: [],
   chat: {
     usernames: [],
-    chatBoxes: []
+    chatBoxes: [],
+    boxesOpen: false
   }
 };
 const enhancers = [];

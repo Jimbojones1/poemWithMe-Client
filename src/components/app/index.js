@@ -5,7 +5,7 @@ import ChatRoom from '../chatroom/chatRoomContainer';
 import './app.css';
 
 const App = () => (
-  <div id="room">
+  <div>
     <main>
       <Route exact path="/" component={ LoginContainer } />
       <Route exact path="/chat" component={ ChatRoom } />
