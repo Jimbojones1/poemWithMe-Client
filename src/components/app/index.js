@@ -5,12 +5,10 @@ import ChatRoom from '../chatroom/chatRoomContainer';
 import './app.css';
 
 const App = () => (
-  <div>
     <main>
       <Route exact path="/" component={ LoginContainer } />
       <Route exact path="/chat" component={ ChatRoom } />
     </main>
-  </div>
 )
 
 export default App;

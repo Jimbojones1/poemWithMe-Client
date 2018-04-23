@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-
+import './styles/styles.css';
+import PrivateMessageHeader from '../privateMessageHeader';
+import PrivateMessageInput from '../privateMessageInput';
+import PrivateMessageArea from '../privateMessageArea';
 
 
 class PrivateMessageBox extends Component {
-    removeClick = (user) => {
-      // this.props.removeBox(user);
+    removeBox = (user) => {
+      console.log(user, 'this is user')
     }
     render(){
 
@@ -15,12 +17,18 @@ class PrivateMessageBox extends Component {
 
       const userBoxes = chatBoxes.map((user, i) => {
         return   <div className="PrivateMessageBox five columns" key={i}>
-                  {user}
+                    <PrivateMessageHeader user={user} removeBox={this.removeBox}/>
+                    <PrivateMessageArea />
+                    <PrivateMessageInput />
                  </div>
                })
 
         return (
-           <div>{userBoxes}</div>
+           <div id="prvBoxArea" className="container">
+              <div className="row">
+                {userBoxes}
+              </div>
+            </div>
           )
         }
      }

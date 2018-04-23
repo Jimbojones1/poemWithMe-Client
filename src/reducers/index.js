@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 
 
 const initializeUsernameReducer = (state={}, action) => {
-  console.log(action, ' this is action', state, ' this is state in reducer')
+
   switch (action.type) {
     case 'login/INITIALIZE_USERNAME':
         // console.log('hitting, in reducer', action.username, state, 'stateee')
@@ -35,7 +35,7 @@ const handleChatReducer = (state={}, action) => {
     case 'chat/BOXES_OPEN':
       return {
         ...state,
-        boxesOpen: !state.boxesOpen
+        boxesOpen: true
       }
 
     default:

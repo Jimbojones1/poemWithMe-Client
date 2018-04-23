@@ -8,16 +8,16 @@ class ChatRoom extends Component {
   openChat = (e) => {
     this.props.addChatBox(e.currentTarget.innerText)
     this.props.openChat();
+
   }
 
   render(){
     const {usernames, chatBoxesOpen} = this.props;
 
     return (
-      <div id="room">
-        <h2>Chat Container</h2>
+      <div id="ChatRoom">
         <UserList users={usernames} openChat={this.openChat}/>
-        {chatBoxesOpen ? <PrivateMessageBox /> : null}
+        {chatBoxesOpen ? <PrivateMessageBox addChat={this.openChat} /> : null}
       </div>
       )
   }
@@ -27,11 +27,9 @@ class ChatRoom extends Component {
 
 // state is passed to this function
 const mapStateToProps = (state) => {
-  console.log(state, ' in mapStateToProps')
   return {
     usernames: state.chat.usernames,
-    chatBoxesOpen: state.boxesOpen
-
+    chatBoxesOpen: state.chat.boxesOpen
   }
 }
 
