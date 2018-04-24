@@ -7,8 +7,8 @@ class PoemInviteModal extends Component {
     return (
       <div id= {this.props.modal ? "dialog" : "dialogClosed"}>
         <div id="button-modal">
-          <button>PoemWithMe</button>
-          <button>No Bitch</button>
+             <button>PoemWithMe</button>
+             <button>No Bitch</button>
         </div>
       </div>
     )

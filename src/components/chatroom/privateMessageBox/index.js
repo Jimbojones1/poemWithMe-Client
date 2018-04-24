@@ -21,16 +21,21 @@ class PrivateMessageBox extends Component {
     }
     submitMessage = (recipient, e) => {
 
-      console.log(e.charCode, ' this is e.charCode', e.currentTarget, e.currentTarget.value)
+
 
       if(e.charCode === 13){
+       const {username, emitPrivateMessage} = this.props;
 
-        const {username, emitPrivateMessage} = this.props;
         const message = e.currentTarget.value;
         emitPrivateMessage(username, recipient, message)
         e.currentTarget.value = ''
       }
       // socket.emit('pm')
+    }
+    handlePoemInvite = (recipient) => {
+      const {username, emitPrivateMessage} = this.props;
+
+      emitPrivateMessage(username, recipient, 'Would you like to poem with me?')
     }
     render(){
 
@@ -38,7 +43,7 @@ class PrivateMessageBox extends Component {
 
       const userBoxes = chatBoxes.map((user, i) => {
         return   <div className="privateMessageBox five columns" key={i}>
-                    <PrivateMessageHeader user={user} removeBox={this.removeBox}/>
+                    <PrivateMessageHeader user={user} removeBox={this.removeBox} submitInvite={this.handlePoemInvite}/>
                     <PrivateMessageArea  prvMsgData={prvMsgData} user={user} sortMessages={this.sortMessages}/>
                     <PrivateMessageInput submitMessage={this.submitMessage} user={user}/>
                  </div>
@@ -67,7 +72,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     emitPrivateMessage: (username, recipient, message) => dispatch(emitPrivateMessage(username, recipient, message)),
-    closeChatBoxes: (username) => dispatch(closeChatBoxes(username))
+    closeChatBoxes: (username) => dispatch(closeChatBoxes(username)),
+
   }
 }
 

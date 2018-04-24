@@ -6,6 +6,8 @@ export const CHAT_BOXES_OPEN = 'chat/BOXES_OPEN';
 export const CHAT_BOXES_CLOSED = 'chat/BOXES_CLOSED';
 export const PM = 'chat/PM';
 export const UPDATE_PRV_MESSAGE = 'chat/UPDATE_PRV_MESSAGE';
+export const HANDLE_POEM_MODAL = 'chat/HANDLE_POEM_MODAL';
+export const HANDLE_POEM_PARTNER = 'chat/HANDLE_POEM_PARTNER';
 
 export function addResponse(message) {
   return { type: ADD_RESPONSE, message };
@@ -49,4 +51,13 @@ export const updatePrivateMessage = (username, recipient, message) => ({
   username,
   recipient,
   message
+})
+
+export const hanldePoemModal = () => ({
+  type: HANDLE_POEM_MODAL,
+})
+
+export const handlePoemPartner = (partner) => ({
+  type: HANDLE_POEM_PARTNER,
+  partner
 })

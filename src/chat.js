@@ -16,7 +16,6 @@ export function chatMiddleWare(store, what){
       // store.dispatch()
     } else if (socket && action.type === actions.PM) {
 
-      console.log('else if in reduce emit emitPrivateMessage', action)
 
       socket.emit('pm', {
                         from: action.username,
@@ -40,10 +39,17 @@ export default function(store) {
   });
 
   socket.on('pm', ({from, recipient, message}) => {
-    console.log('pm', from, recipient, message)
-
+    // console.log('pm', from, recipient, message)
 
     store.dispatch(actions.updatePrivateMessage(from, recipient, message))
+
+    if(message === 'Would you like to poem with me?'){
+      console.log(from, ' inside of jalsfjlakdsjflkasdjfl;kjakl;fjds')
+      store.dispatch(actions.hanldePoemModal())
+      store.dispatch(actions.handlePoemPartner(from))
+    }
+
+
 
   });
 }

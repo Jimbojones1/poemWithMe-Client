@@ -18,7 +18,7 @@ const initializeUsernameReducer = (state={}, action) => {
 
 
 const handleChatReducer = (state={}, action) => {
-
+  console.log(state, ' this is state in handleChatReducer')
   switch (action.type){
     case 'chat/UPDATE_CHAT_USERS':
 
@@ -88,6 +88,13 @@ const handleChatReducer = (state={}, action) => {
 
       }
 
+    case 'chat/HANDLE_POEM_MODAL':
+
+      return {
+        ...state,
+        poemModal: !state.poemModal
+      }
+
 
 
     default:
@@ -95,6 +102,18 @@ const handleChatReducer = (state={}, action) => {
   }
 }
 
+
+const poemRoomReducer = (state={}, action) => {
+  switch(action.type){
+    case 'chat/HANDLE_POEM_PARTNER':
+      return {
+        ...state,
+        poemPartner: action.partner
+      }
+    default:
+      return state
+  }
+}
 
 
 
