@@ -1,18 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import { initialiazeUsername as setUsername } from '../../actions/message-actions';
+import './styles/style.css'
 
-import Login from './Login';
 
-console.log(Login, ' this from login')
+const Login = ({setUsername}) => {
 
-class LoginContainer extends Component {
-  render() {
-    console.log(this.props, ' in LoginController')
     return (
-      <Login />
+        <form className='username' onSubmit={(e) => {
+          e.preventDefault();
+          setUsername(this.input.value)
+
+        }}>
+        <input type='text' placeholder="username" ref={node => {
+
+            this.input = node;
+          }}/>
+        <button>Submit</button>
+      </form>
       )
-  }
 }
+
 
 
 
@@ -23,4 +31,14 @@ const mapDispatchToProps = () => {
 }
 
 
-export default connect( null, null )( LoginContainer );
+
+
+const mapDispatchToProps = (dispatch, route) => {
+  return {
+    setUsername: (username) => dispatch(setUsername(username, route))
+  }
+
+}
+
+
+export default connect( null, mapDispatchToProps )( Login );

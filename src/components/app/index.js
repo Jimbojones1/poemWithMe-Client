@@ -1,19 +1,16 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom';
-import LoginContainer from '../login/LoginContainer';
-
-console.log(LoginContainer, ' form import')
+import LoginContainer from '../login/loginContainer';
+import ChatRoom from '../chatroom/chatRoomContainer';
+import PoemRoom from '../poemRoom/poemRoomContainer';
+import './app.css';
 
 const App = () => (
-  <div>
-    <header>
-      <Link to="/">Login</Link>
-    </header>
-
     <main>
-      <Route exact path="/" component={LoginContainer} />
+      <Route exact path="/" component={ LoginContainer } />
+      <Route exact path="/chat" component={ ChatRoom } />
+      <Route exact path="/poemRoom" component= { PoemRoom } />
     </main>
-  </div>
 )
 
 export default App;

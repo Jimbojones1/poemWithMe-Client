@@ -6,13 +6,23 @@ import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import reducers from './reducers';
 import {chatMiddleWare} from './chat';
-import { composeWithDevToools } from 'redux-devtools-extension';
+// import { composeWithDevToools } from 'redux-devtools-extension';
 
 export const history = createHistory();
 
 const initialState = {
-  username: '',
-  messages: []
+  username: 'jim',
+  chat: {
+    poemModal: false,
+    usernames: [],
+    chatBoxes: [],
+    boxesOpen: false,
+    prvMsgData: []
+  },
+  poemRoom: {
+    poemPartner: ''
+  }
+
 };
 const enhancers = [];
 
@@ -30,7 +40,6 @@ if(process.env.NODE_ENV === 'development'){
     enhancers.push(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 };
-
 
 const composedEnhancers = compose(
   applyMiddleware(...middleware),
