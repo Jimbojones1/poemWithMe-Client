@@ -23,16 +23,6 @@ const Login = ({setUsername}) => {
 
 
 
-
-const mapDispatchToProps = () => {
-  return {
-    initializeUsername: setUsername
-  }
-}
-
-
-
-
 const mapDispatchToProps = (dispatch, route) => {
   return {
     setUsername: (username) => dispatch(setUsername(username, route))

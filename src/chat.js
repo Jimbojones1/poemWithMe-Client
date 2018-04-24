@@ -5,7 +5,6 @@ let socket = null;
 
 export function chatMiddleWare(store, what){
   return next => action => {
-    console.log(action, 'action being dispatched')
     const result = next(action);
     if(socket && action.type === actions.INITIALIZE_USERNAME){
       // send socket emit message
@@ -50,16 +49,13 @@ export default function(store) {
     store.dispatch(actions.updatePrivateMessage(from, recipient, message))
 
     if(message === 'Would you like to poem with me?'){
-      console.log(from, ' inside of jalsfjlakdsjflkasdjfl;kjakl;fjds')
       store.dispatch(actions.hanldePoemModal())
       store.dispatch(actions.handlePoemPartner(from))
     } else if(message === 'accepted poem invite'){
        store.dispatch(push('/poemRoom'));
+    } else {
+
     }
-    // } else if(message === 'sorry, not right now.'){
-    //    console.log('hitting sorry i dont wanna poem write now')
-    //    store.dispatch(actions.hanldePoemModal())
-    // }
 
 
 

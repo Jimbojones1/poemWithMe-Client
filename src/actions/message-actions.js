@@ -53,12 +53,11 @@ export const updatePrivateMessage = (username, recipient, message) => ({
   message
 })
 
-export const hanldePoemModal = (route) => ({
-  type: HANDLE_POEM_MODAL,
-  route
+export const hanldePoemModal = () => ({
+  type: HANDLE_POEM_MODAL
 })
 
-export const handlePoemPartner = (partner, route) => ({
+export const handlePoemPartner = (partner) => ({
   type: HANDLE_POEM_PARTNER,
   partner
 })
