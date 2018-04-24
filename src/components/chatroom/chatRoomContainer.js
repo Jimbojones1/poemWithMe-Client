@@ -12,10 +12,11 @@ class ChatRoom extends Component {
     this.props.openChat();
 
   }
-  handleModelAnswer = (e) => {
-
+  handleModalAnswer = (e) => {
+    console.log('handle Modal Answer is happening', e.currentTarget.innerText)
     const { username, emitPrivateMessage, partner } = this.props;
-    if(e.currentTarget.innerText === 'PoemWithMe') {
+    console.log('Partner', partner)
+    if(e.currentTarget.innerText === 'POEMWITHME') {
       emitPrivateMessage(username, partner, 'accepted poem invite')
     } else {
       emitPrivateMessage(username, partner, 'sorry, not right now.')
@@ -30,7 +31,7 @@ class ChatRoom extends Component {
       <div id="ChatRoom">
         <UserList users={usernames} openChat={this.openChat}/>
         {chatBoxesOpen ? <PrivateMessageBox addChat={this.openChat} /> : null}
-        {poemModal ? <PoemInviteModal modal={poemModal} /> : null}
+        {poemModal ? <PoemInviteModal modal={poemModal} handleAnswer={this.handleModalAnswer} /> : null}
       </div>
       )
   }
@@ -42,7 +43,7 @@ class ChatRoom extends Component {
 const mapStateToProps = (state) => {
   // console.log(state, ' this is state in chatroom Container')
   return {
-    partner: state.poemRoom.partner,
+    partner: state.poemRoom.poemPartner,
     username: state.username,
     poemModal: state.chat.poemModal,
     usernames: state.chat.usernames,

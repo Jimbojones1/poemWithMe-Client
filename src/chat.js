@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 import * as actions from './actions/message-actions';
-
+import { push } from 'react-router-redux';
 let socket = null;
 
 export function chatMiddleWare(store, what){
@@ -12,10 +12,16 @@ export function chatMiddleWare(store, what){
       // console.log('inside if and action.type')
 
       socket.emit('setInitialUsername', action.username);
-      action.route.history.push('/chat')
+      store.dispatch(push('/chat'))
       // store.dispatch()
     } else if (socket && action.type === actions.PM) {
 
+      if(action.message === 'accepted poem invite'){
+         store.dispatch(actions.hanldePoemModal());
+         store.dispatch(push('/poemRoom'))
+       } else if(action.message === 'sorry, not right now.'){
+         store.dispatch(actions.hanldePoemModal());
+       }
 
       socket.emit('pm', {
                         from: action.username,
@@ -39,7 +45,7 @@ export default function(store) {
   });
 
   socket.on('pm', ({from, recipient, message}) => {
-    // console.log('pm', from, recipient, message)
+    console.log('pm', from, recipient, message)
 
     store.dispatch(actions.updatePrivateMessage(from, recipient, message))
 
@@ -47,7 +53,13 @@ export default function(store) {
       console.log(from, ' inside of jalsfjlakdsjflkasdjfl;kjakl;fjds')
       store.dispatch(actions.hanldePoemModal())
       store.dispatch(actions.handlePoemPartner(from))
+    } else if(message === 'accepted poem invite'){
+       store.dispatch(push('/poemRoom'));
     }
+    // } else if(message === 'sorry, not right now.'){
+    //    console.log('hitting sorry i dont wanna poem write now')
+    //    store.dispatch(actions.hanldePoemModal())
+    // }
 
 
 

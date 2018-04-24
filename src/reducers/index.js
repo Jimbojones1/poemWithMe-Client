@@ -5,9 +5,6 @@ const initializeUsernameReducer = (state={}, action) => {
 
   switch (action.type) {
     case 'login/INITIALIZE_USERNAME':
-        console.log(action.username, ' in init username', state)
-        // console.log('hitting, in reducer', action.username, state, 'stateee')
-        // console.log({username: action.username})
         return action.username
     default:
 
@@ -18,7 +15,7 @@ const initializeUsernameReducer = (state={}, action) => {
 
 
 const handleChatReducer = (state={}, action) => {
-  console.log(state, ' this is state in handleChatReducer')
+
   switch (action.type){
     case 'chat/UPDATE_CHAT_USERS':
 
@@ -135,5 +132,6 @@ const messageReducer = (state={}, action) => {
 export default combineReducers({
   messages: messageReducer,
   username: initializeUsernameReducer,
-  chat: handleChatReducer
+  chat: handleChatReducer,
+  poemRoom: poemRoomReducer
 });

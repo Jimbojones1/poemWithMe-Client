@@ -1,32 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './styles/style.css';
 
-class PoemInviteModal extends Component {
-
-  render(){
+const PoemInviteModal = ({modal, handleAnswer}) => {
     return (
-      <div id= {this.props.modal ? "dialog" : "dialogClosed"}>
+      <div id= {modal ? "dialog" : "dialogClosed"}>
         <div id="button-modal">
-             <button>PoemWithMe</button>
-             <button>No Bitch</button>
+             <button onClick={handleAnswer}>PoemWithMe</button>
+             <button onClick={handleAnswer}>No Bitch</button>
         </div>
       </div>
     )
-  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 export default PoemInviteModal;
