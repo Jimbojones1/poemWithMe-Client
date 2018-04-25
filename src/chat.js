@@ -6,6 +6,8 @@ let socket = null;
 export function chatMiddleWare(store, what){
   return next => action => {
     const result = next(action);
+
+    console.log(action, ' this is action in chatMiddleWare')
     if(socket && action.type === actions.INITIALIZE_USERNAME){
       // send socket emit message
       // console.log('inside if and action.type')
@@ -27,6 +29,12 @@ export function chatMiddleWare(store, what){
                         recipient: action.recipient,
                         message: action.message
                       });
+    } else if (socket && action.type === actions.HANDLE_POEM_TEXT && action.sending){
+
+      console.log('this is happeing in chatMiddleWare')
+      socket.emit('poeming', action.text)
+    } else {
+
     }
 
     return result;
@@ -56,8 +64,14 @@ export default function(store) {
     } else {
 
     }
-
-
-
   });
+
+  socket.on('poeming', (text) => {
+    console.log(text, ' text in poeming')
+    store.dispatch(actions.handleUserPoemInput(text, false))
+  });
+
+
+
+
 }

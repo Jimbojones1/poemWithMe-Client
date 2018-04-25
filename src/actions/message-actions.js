@@ -63,7 +63,8 @@ export const handlePoemPartner = (partner) => ({
   partner
 })
 
-export const handleUserPoemInput = (text) => ({
+export const handleUserPoemInput = (text, sending) => ({
   type: HANDLE_POEM_TEXT,
-  text
+  text,
+  sending
 })

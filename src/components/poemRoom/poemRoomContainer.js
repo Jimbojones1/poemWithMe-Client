@@ -12,16 +12,15 @@ class PoemRoom extends Component {
   handleInput = (e) => {
 
     const { handlePoemInput } = this.props;
-    console.log(e.currentTarget.value, ' in handleInput', handlePoemInput)
-    handlePoemInput(e.currentTarget.value)
+    handlePoemInput(e.currentTarget.value, true)
   }
   render(){
 
-
+    const { poemText } = this.props;
 
     return (
       <div>
-        <RoomUser handlePoemInput={this.handleInput}/>
+        <RoomUser handlePoemInput={this.handleInput} poemText={poemText}/>
         <PoemArea />
       </div>
       )
@@ -35,12 +34,13 @@ const mapStateToProps = (state) => {
   return {
     partner: state.poemRoom.poemPartner,
     username: state.username,
+    poemText: state.poemRoom.userTextArea
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handlePoemInput: (text) => dispatch(handleUserPoemInput(text))
+    handlePoemInput: (text, sending) => dispatch(handleUserPoemInput(text, sending))
   }
 }
 
