@@ -8,6 +8,7 @@ export const PM = 'chat/PM';
 export const UPDATE_PRV_MESSAGE = 'chat/UPDATE_PRV_MESSAGE';
 export const HANDLE_POEM_MODAL = 'chat/HANDLE_POEM_MODAL';
 export const HANDLE_POEM_PARTNER = 'chat/HANDLE_POEM_PARTNER';
+export const HANDLE_POEM_TEXT    = 'poem/HANDLE_POEM_TEXT';
 
 export function addResponse(message) {
   return { type: ADD_RESPONSE, message };
@@ -60,4 +61,9 @@ export const hanldePoemModal = () => ({
 export const handlePoemPartner = (partner) => ({
   type: HANDLE_POEM_PARTNER,
   partner
+})
+
+export const handleUserPoemInput = (text) => ({
+  type: HANDLE_POEM_TEXT,
+  text
 })

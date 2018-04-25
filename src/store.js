@@ -20,7 +20,11 @@ const initialState = {
     prvMsgData: []
   },
   poemRoom: {
-    poemPartner: ''
+    poemPartner: '',
+    activateTyping: false,
+    whosTurn: '',
+    userTextArea: '',
+    finalPoem: ''
   }
 
 };
