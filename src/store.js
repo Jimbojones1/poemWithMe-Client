@@ -11,7 +11,7 @@ import {chatMiddleWare} from './chat';
 export const history = createHistory();
 
 const initialState = {
-  username: 'jim',
+  username: '',
   chat: {
     poemModal: false,
     usernames: [],

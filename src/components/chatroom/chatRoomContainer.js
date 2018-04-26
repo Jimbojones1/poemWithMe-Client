@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addChatBox,  openChatBoxes, hanldePoemModal, emitPrivateMessage } from '../../actions/message-actions';
+import { addChatBox,  openChatBoxes, hanldePoemModal, emitPrivateMessage, emitPoemInvite } from '../../actions/message-actions';
 import UserList from './userList';
 import PrivateMessageBox from './privateMessageBox';
 import PoemInviteModal from './poemInvitationModal';
@@ -14,10 +14,12 @@ class ChatRoom extends Component {
   }
   handleModalAnswer = (e) => {
     console.log('handle Modal Answer is happening', e.currentTarget.innerText)
-    const { username, emitPrivateMessage, partner } = this.props;
+    const { username, emitPrivateMessage, partner, emitPoemInvite } = this.props;
     console.log('Partner', partner)
     if(e.currentTarget.innerText === 'POEMWITHME') {
       emitPrivateMessage(username, partner, 'accepted poem invite')
+      emitPoemInvite(username, partner);
+
     } else {
       emitPrivateMessage(username, partner, 'sorry, not right now.')
     }
@@ -56,8 +58,8 @@ const mapDispatchToProps = (dispatch) => {
     addChatBox: (username) => dispatch(addChatBox(username)),
     openChat: () => dispatch(openChatBoxes()),
     hanldePoemModal: () => dispatch(hanldePoemModal()),
-    emitPrivateMessage: (username, recipient, message) => dispatch(emitPrivateMessage(username, recipient, message))
-
+    emitPrivateMessage: (username, recipient, message) => dispatch(emitPrivateMessage(username, recipient, message)),
+    emitPoemInvite: (username, recipient) => dispatch(emitPoemInvite(username, recipient))
   }
 }
 

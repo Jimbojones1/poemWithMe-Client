@@ -17,10 +17,7 @@ export function chatMiddleWare(store, what){
       // store.dispatch()
     } else if (socket && action.type === actions.PM) {
 
-      if(action.message === 'accepted poem invite'){
-         store.dispatch(actions.hanldePoemModal());
-         store.dispatch(push('/poemRoom'))
-       } else if(action.message === 'sorry, not right now.'){
+      if(action.message === 'sorry, not right now.'){
          store.dispatch(actions.hanldePoemModal());
        }
 
@@ -31,12 +28,15 @@ export function chatMiddleWare(store, what){
                       });
     } else if (socket && action.type === actions.HANDLE_POEM_TEXT && action.sending){
 
-      console.log('this is happeing in chatMiddleWare')
       socket.emit('poeming', action.text)
-    } else {
 
+    } else if (socket && action.type === actions.POEM_INVITE){
+
+       socket.emit('invite', action.username, action.recipient);
+       store.dispatch(actions.hanldePoemModal());
+       store.dispatch(actions.handlePoemPartner(action.recipient));
+       store.dispatch(push('/poemRoom'));
     }
-
     return result;
   }
 }
@@ -60,6 +60,7 @@ export default function(store) {
       store.dispatch(actions.hanldePoemModal())
       store.dispatch(actions.handlePoemPartner(from))
     } else if(message === 'accepted poem invite'){
+       store.dispatch(actions.handlePoemPartner(from))
        store.dispatch(push('/poemRoom'));
     } else {
 
@@ -68,7 +69,7 @@ export default function(store) {
 
   socket.on('poeming', (text) => {
     console.log(text, ' text in poeming')
-    store.dispatch(actions.handleUserPoemInput(text, false))
+    store.dispatch(actions.handleUserPoemInput(text, false));
   });
 
 

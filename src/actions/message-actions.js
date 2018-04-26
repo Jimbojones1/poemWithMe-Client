@@ -9,6 +9,7 @@ export const UPDATE_PRV_MESSAGE = 'chat/UPDATE_PRV_MESSAGE';
 export const HANDLE_POEM_MODAL = 'chat/HANDLE_POEM_MODAL';
 export const HANDLE_POEM_PARTNER = 'chat/HANDLE_POEM_PARTNER';
 export const HANDLE_POEM_TEXT    = 'poem/HANDLE_POEM_TEXT';
+export const POEM_INVITE         = 'chat/POEM_INVITE';
 
 export function addResponse(message) {
   return { type: ADD_RESPONSE, message };
@@ -45,6 +46,12 @@ export const emitPrivateMessage = (username, recipient, message) => ({
   username,
   recipient,
   message
+})
+
+export const emitPoemInvite = (username, recipient) => ({
+  type: POEM_INVITE,
+  username,
+  recipient
 })
 
 export const updatePrivateMessage = (username, recipient, message) => ({

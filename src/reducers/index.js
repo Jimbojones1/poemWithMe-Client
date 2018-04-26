@@ -103,6 +103,7 @@ const handleChatReducer = (state={}, action) => {
 const poemRoomReducer = (state={}, action) => {
   switch(action.type){
     case 'chat/HANDLE_POEM_PARTNER':
+    console.log('handle poem partner is happeing in reducer here is the action', action)
       return {
         ...state,
         poemPartner: action.partner
