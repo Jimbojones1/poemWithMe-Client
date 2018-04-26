@@ -1,11 +1,12 @@
 import React from 'react';
 
 
-const PoemArea = () =>{
+const PoemArea = ({handlePoemInput, poemText}) =>{
+
   return (
-     <div id="poemArea">
-          <h4></h4>
-          <div id="poemsArea">Hi</div>
+     <div id="poemArea" className='six columns'>
+          <h4>Let's Poem!</h4>
+          <textarea onChange={handlePoemInput} autoFocus="true" type='text' value={poemText}/>
       </div>
 
     )

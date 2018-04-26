@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { handleUserPoemInput } from '../../actions/message-actions';
 import RoomUser from './roomUser';
 import PoemArea from './poemArea';
+import Timer from './timer';
 import './styles/style.css';
 
 
@@ -19,9 +20,12 @@ class PoemRoom extends Component {
     const { poemText } = this.props;
 
     return (
-      <div>
-        <RoomUser handlePoemInput={this.handleInput} poemText={poemText}/>
-        <PoemArea />
+      <div className='container'>
+        <div className='row'>
+          <RoomUser/>
+          <PoemArea  handlePoemInput={this.handleInput} poemText={poemText}/>
+          <Timer />
+        </div>
       </div>
       )
   }
