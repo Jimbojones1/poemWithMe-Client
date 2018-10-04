@@ -24,7 +24,8 @@ const initialState = {
     activateTyping: false,
     whosTurn: '',
     userTextArea: '',
-    finalPoem: ''
+    finalPoem: '',
+    turnNumber: 1
   }
 
 };

@@ -113,6 +113,12 @@ const poemRoomReducer = (state={}, action) => {
         ...state,
         userTextArea:  action.text
      }
+    case 'poem/START_POEM':
+      return {
+        ...state,
+        whoClickedStart: action.whoClickedStart,
+        whosTurn: action.whoClickedStart
+      }
     default:
       return state
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleUserPoemInput } from '../../actions/message-actions';
+import { handleUserPoemInput, startPoem } from '../../actions/message-actions';
 import RoomUser from './roomUser';
 import PoemArea from './poemArea';
 import Timer from './timer';
@@ -17,14 +17,14 @@ class PoemRoom extends Component {
   }
   render(){
 
-    const { poemText } = this.props;
+    const { poemText, startPoem, username } = this.props;
 
     return (
       <div className='container'>
         <div className='row'>
           <RoomUser/>
           <PoemArea  handlePoemInput={this.handleInput} poemText={poemText}/>
-          <Timer />
+          <Timer startPoem={startPoem} username={username}/>
         </div>
       </div>
       )
@@ -44,6 +44,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    startPoem: (whoClicked, sending) => dispatch(startPoem(whoClicked, sending)),
     handlePoemInput: (text, sending) => dispatch(handleUserPoemInput(text, sending))
   }
 }

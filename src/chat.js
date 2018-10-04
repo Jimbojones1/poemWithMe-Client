@@ -26,7 +26,13 @@ export function chatMiddleWare(store, what){
                         recipient: action.recipient,
                         message: action.message
                       });
+    } else if(socket&& action.type === actions.START_POEM && action.sending){
+      console.log('first start_poem')
+      socket.emit('start_poem', action.whoClickedStart)
+
+
     } else if (socket && action.type === actions.HANDLE_POEM_TEXT && action.sending){
+
 
       socket.emit('poeming', action.text)
 
@@ -72,7 +78,10 @@ export default function(store) {
     store.dispatch(actions.handleUserPoemInput(text, false));
   });
 
-
+  socket.on('start_poem', (whoClickedStart) => {
+    console.log('start_poem is happening')
+    store.dispatch(actions.startPoem(whoClickedStart, false));
+  });
 
 
 }
