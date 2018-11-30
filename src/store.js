@@ -25,7 +25,8 @@ const initialState = {
     whosTurn: '',
     userTextArea: '',
     finalPoem: '',
-    turnNumber: 1
+    turnNumber: 1,
+    whoClickedStart: ''
   }
 
 };
