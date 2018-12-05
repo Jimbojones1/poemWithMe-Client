@@ -16,7 +16,7 @@ class ChatRoom extends Component {
     console.log('handle Modal Answer is happening', e.currentTarget.innerText)
     const { username, emitPrivateMessage, partner, emitPoemInvite } = this.props;
     console.log('Partner', partner)
-    if(e.currentTarget.innerText === 'POEMWITHME') {
+    if(e.currentTarget.innerText === 'PoemWithMe') {
       emitPrivateMessage(username, partner, 'accepted poem invite')
       emitPoemInvite(username, partner);
 

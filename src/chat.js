@@ -42,6 +42,10 @@ export function chatMiddleWare(store, what){
        store.dispatch(actions.hanldePoemModal());
        store.dispatch(actions.handlePoemPartner(action.recipient));
        store.dispatch(push('/poemRoom'));
+    } else if (socket && action.type === action.START_POEM){
+
+      socket.emit('start_poem',action.whoClickedStart && action.sending);
+
     }
     return result;
   }

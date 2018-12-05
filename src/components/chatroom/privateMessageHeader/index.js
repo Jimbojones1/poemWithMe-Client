@@ -7,7 +7,7 @@ const PrivateMessageHeader = ({user, removeBox, submitInvite}) => {
 
           <h4 className='prvUserInfo'>{user}</h4>
           <ul id="chatButtonUl">
-            <li><i className="fa fa-pencil" aria-hidden="true" onClick={submitInvite.bind(null, user)}></i></li>
+            <li><i className="fa fa-pencil" aria-hidden="true" onClick={submitInvite.bind(null, user)}>con</i></li>
             <li><i className="fa fa-minus" aria-hidden="true"></i></li>
             <li className='removeButton'><i className="fa fa-times" aria-hidden="true" onClick={removeBox.bind(null, user)}></i></li>
           </ul>
