@@ -11,7 +11,7 @@ export function chatMiddleWare(store, what){
     if(socket && action.type === actions.INITIALIZE_USERNAME){
       // send socket emit message
       // console.log('inside if and action.type')
-
+      console.log(action.username, ' usernameeeeee action')
       socket.emit('setInitialUsername', action.username);
       store.dispatch(push('/chat'))
       // store.dispatch()
@@ -85,6 +85,14 @@ export default function(store) {
   socket.on('start_poem', (whoClickedStart) => {
     console.log('start_poem is happening')
     store.dispatch(actions.startPoem(whoClickedStart, false));
+  });
+
+  socket.on('countdown', (time) => {
+    console.log(time);
+  })
+
+  socket.on('next_round', (round) => {
+
   });
 
 
