@@ -27,7 +27,8 @@ const initialState = {
     finalPoem: '',
     turnNumber: 1,
     whoClickedStart: ''
-  }
+  },
+  messages: []
 
 };
 const enhancers = [];
@@ -40,6 +41,11 @@ const middleware = [
   routerMiddleware(history)
 ];
 
+const composedEnhancers = compose(
+  applyMiddleware(...middleware),
+  ...enhancers
+);
+
 
 if(process.env.NODE_ENV === 'development'){
 
@@ -47,11 +53,11 @@ if(process.env.NODE_ENV === 'development'){
 
 };
 
-const composedEnhancers = compose(
-  applyMiddleware(...middleware),
-  ...enhancers
-);
 
+// console.log(rootReducer)
+// console.log(rootReducer, 'rootReducer')
+// console.log(initialState, ' initialState')
+console.log(composedEnhancers, 'com')
 const store = createStore(
   rootReducer,
   initialState,
